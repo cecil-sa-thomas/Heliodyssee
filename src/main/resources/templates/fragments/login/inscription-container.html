@@ -1,0 +1,49 @@
+<div th:fragment="inscription-container" class="inscription-container hidden" id="inscriptionContainer" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="inscription-form">
+
+        <h2 class="form-title">Inscription</h2>
+        <div class="title-divider"></div>
+
+        <form id="inscriptionForm">
+            <div class="form-group">
+                <label class="form-label">nom</label>
+                <input type="text" class="form-input" name="nom" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">prénom</label>
+                <input type="text" class="form-input" name="prenom" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">date de naissance</label>
+                <input type="date" class="form-input" name="dateNaissance" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">téléphone</label>
+                <input type="tel" class="form-input" name="telephone" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">e-mail</label>
+                <input type="email" class="form-input" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">mot de passe</label>
+                <input type="password" class="form-input" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">confirmation</label>
+                <input type="password" class="form-input" name="confirmation" required>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit" class="form-button validate-button">Valider</button>
+                <button type="button" class="form-button close-form-button" id="closeFormButton">Fermer</button>
+            </div>
+        </form>
+    </div>
+</div>

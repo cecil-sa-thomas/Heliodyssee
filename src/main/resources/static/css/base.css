@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: normal;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* ← C'était ça le problème principal*/
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}

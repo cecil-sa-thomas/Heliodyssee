@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-initial-schema
+      author: admin
+      changes:
+        - sqlFile:
+            path: structure/V0_0_1_create_initial_schema.sql
+            relativeToChangelogFile: true
+            endDelimiter: ";"
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: 002-alter-initial-schema
+      author: admin
+      changes:
+        - sqlFile:
+            path: structure/V0_0_1_alter_initial_schema.sql
+            relativeToChangelogFile: true
+            endDelimiter: ";"
+            splitStatements: true
+            stripComments: true
+  - changeSet:
+      id: 003-insert-data-schema
+      author: admin
+      changes:
+        - sqlFile:
+            path: data/V0_0_1_insert_data_schema.sql
+            relativeToChangelogFile: true
+            endDelimiter: ";"
+            splitStatements: true
+            stripComments: true

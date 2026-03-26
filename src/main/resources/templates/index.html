@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>INDEX</title>
+        <link rel="stylesheet" th:href="@{/css/style-index.css}">
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+
+        <!-- ✅ Ajout de Stripe -->
+        <script src="https://js.stripe.com/v3/"></script>
+
+        <script type="module" th:src="@{/js/navigation/shared.js}"></script>
+        <script type="module" th:src="@{/js/navigation/navigation.js}"></script>
+        <script type="module" th:src="@{/js/navigation/destination.js}"></script>
+        <script th:src="@{/js/navigation/booking.js}" defer></script>
+        <script th:src="@{/js/login-box.js}" defer></script>
+        <script th:src="@{/js/user-auth/user-panel.js}" defer></script>
+        <script th:src="@{/js/user-auth/settings.js}" defer></script>
+        <script th:src="@{/js/user-auth/payment-card.js}" defer></script>
+        <script th:src="@{/js/user-auth/get-user-booking.js}" defer></script>
+        <script th:src="@{/js/user-auth/get-user-upcoming-bookings.js}" defer></script>
+    </head>
+    <body>
+    <div th:replace="~{fragments/header :: header}"></div>
+    <div sec:authorize="isAnonymous()">
+        <div th:replace="~{fragments/login/nav-buttons-container :: nav-buttons-container}"></div>
+        <div th:replace="~{fragments/login/inscription-container :: inscription-container}"></div>
+        <div th:replace="~{fragments/login/connexion-container :: connexion-container}"></div>
+        <div th:if="${loginError}" class="error-message">
+            Adresse e-mail ou mot de passe invalide.
+        </div>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <div th:replace="~{fragments/session/user-authenticated :: user-authenticated}"></div>
+        <div th:replace="~{fragments/session/booking-user-container :: booking-authenticated}"></div>
+        <div th:replace="~{fragments/session/booking/create-booking-container :: create-booking-container}"></div>
+        <div th:replace="~{fragments/session/user-menu/settings-container :: settings-container}"></div>
+        <div th:replace="~{fragments/session/user-menu/card-list-container :: card-list-container}"></div>
+    </div>
+    <div th:replace="~{fragments/login/forgot-container :: forgot-container}"></div>
+    <div th:replace="~{fragments/destination-container :: destination-container}"></div>
+    <div th:replace="~{fragments/flights-list-container :: flights-list-container}"></div>
+    <div th:replace="~{fragments/planets :: planets}"></div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
+    <div th:replace="~{fragments/planets-container :: planets-container}"></div>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des réservations</title>
+    <link rel="stylesheet" th:href="@{/css/admin/admin.css}">
+</head>
+<body>
+<header>
+    <h1>Interface Admin – Backoffice</h1>
+    <div th:replace="~{admin/menu :: menu}"></div>
+</header>
+<main>
+    <h1>Liste des réservations</h1>
+    <a href="/admin/bookings/new" style="margin-bottom: 10px; display: inline-block;">➕ Ajouter</a>
+    <div th:if="${success}" th:text="${success}" style="color:green; font-weight:bold; margin-bottom:10px;"></div>
+    <div th:if="${error}" th:text="${error}" style="color:red; font-weight:bold; margin-bottom:10px;"></div>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID</th><th>Vol</th><th>User</th><th>Siège</th><th>Prix</th><th>Nom passager</th><th>Prénom passager</th><th>Num passager</th><th>Âge</th><th>Sexe</th><th>Status</th><th>Détail</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="booking : ${bookings}">
+            <td th:text="${booking.idBooking}"></td>
+            <td th:text="${booking.idFlight}"></td>
+            <td th:text="${booking.idUser}"></td>
+            <td th:text="${booking.seatNumber}"></td>
+            <td th:text="${booking.price}"></td>
+            <td th:text="${booking.lastNamePassenger}"></td>
+            <td th:text="${booking.firstNamePassenger}"></td>
+            <td th:text="${booking.numberPassenger}"></td>
+            <td th:text="${booking.passengerAge}"></td>
+            <td th:text="${booking.gender} ? 'H' : 'F'"></td>
+            <td th:text="${booking.status}"></td>
+            <td>
+                <a th:if="${booking.idBooking != null}" th:href="@{'/admin/bookings/' + ${booking.idBooking}}">Voir</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/admin" style="margin-top: 20px; display: inline-block;">Retour menu admin</a>
+</main>
+</body>
+</html>

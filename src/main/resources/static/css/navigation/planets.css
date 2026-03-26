@@ -1,0 +1,164 @@
+/* Viewport principal */
+.solar-system {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('/images/astre/2k_stars_milky_way.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Conteneur de la caméra */
+.camera {
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    position: relative;
+    pointer-events: none;
+}
+
+/* Groupe contenant toutes les planètes */
+#planets-group {
+    position: absolute;
+    bottom: -65%;
+    width: 100%;
+    height: 110%;
+    transform-style: preserve-3d;
+    transform-origin: center 80%;
+    transform: translateZ(700px);
+}
+
+/* Style commun à toutes les planètes */
+.celestial-body {
+    backface-visibility: hidden;
+    position: absolute;
+    width: 30vh;
+    height: 30vh;
+    border-radius: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    pointer-events: all;
+
+    /* Ombre dynamique */
+    box-shadow: 0px -70px 150px rgba(255, 255, 255, 0.2);
+
+    /* Animation de rotation */
+    animation: rotateBackground 50s linear infinite;
+
+    /* Applique un effet d'ombrage central sur toutes les planètes */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Ajout d'un effet de gradient noir */
+.celestial-body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at bottom, black 0%, black 70%, rgba(0, 0, 0, 0.005) 90%);
+}
+
+/* Style unique pour chaque planète */
+
+/* Mercure */
+#mercure {
+    transform: translate(-50%, 0) translateZ(0px);
+    background-image: url('/images/astre/2k_mercury.jpg');
+    box-shadow: 0px -20px 150px rgb(118, 127, 109);
+}
+
+/* Vénus */
+#venus {
+    transform: translate(-50%, 0) translateZ(-4000px);
+    background-image: url('/images/astre/2k_venus_atmosphere.jpg');
+    box-shadow: 0px -20px 150px rgb(182, 186, 81);
+}
+
+/* Terre */
+#terre {
+    transform: translate(-50%, 0) translateZ(-8000px);
+    background-image:
+        url('/images/astre/Earth-clouds.png'),
+        url('/images/astre/2k_earth_daymap.jpg');
+    box-shadow: 0px -20px 150px rgb(86, 138, 218);
+}
+
+/* Mars */
+#mars {
+    transform: translate(-50%, 0) translateZ(-12000px);
+    background-image: url('/images/astre/2k_mars.jpg');
+    box-shadow: 0px -20px 150px rgba(205, 95, 31, 0.566);
+}
+
+/* Jupiter */
+#jupiter {
+    transform: translate(-50%, 0) translateZ(-16000px);
+    background-image: url('/images/astre/2k_jupiter.jpg');
+    box-shadow: 0px -20px 150px rgb(165, 128, 65);
+}
+
+/* Saturne */
+#saturne {
+    transform: translate(-50%, 0) translateZ(-20000px);
+    background-image: url('/images/astre/2k_saturn.jpg');
+    box-shadow: 0px -20px 150px rgb(218, 209, 86);
+}
+
+#ring {
+    transform: translate(-50%, 0) translateZ(-20000px);
+    backface-visibility: hidden;
+    position: absolute;
+    width: 30vh;
+    height: 30vh;
+    border-radius: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(250, 250, 250);
+    font-family: Arial, sans-serif;
+    pointer-events: all;
+}
+
+/* Uranus */
+#uranus {
+    transform: translate(-50%, 0) translateZ(-24000px);
+    background-image: url('/images/astre/2k_uranus.jpg');
+    box-shadow: 0px -20px 150px rgb(175, 199, 235);
+}
+
+/* Neptune */
+#neptune {
+    transform: translate(-50%, 0) translateZ(-28000px);
+    background-image: url('/images/astre/2k_neptune.jpg');
+    box-shadow: 0px -20px 150px rgb(47, 65, 224);
+}
+
+/* Pluton */
+#pluton {
+    transform: translate(-50%, 0) translateZ(-32000px);
+    background-image: url('/images/astre/2k_eris.jpg');
+    box-shadow: 0px -20px 150px rgb(109, 110, 110);
+}
+
+/* Animation de rotation */
+@keyframes rotateBackground {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}
+

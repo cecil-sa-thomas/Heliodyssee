@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mes Factures</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .invoice {
+            background: white;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+
+        .invoice h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .section {
+            margin-top: 12px;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        .value {
+            margin-left: 4px;
+        }
+
+        .flex {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .flex div {
+            width: 50%;
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+<h1>Mes Factures</h1>
+
+<div th:each="invoice : ${invoices}" class="invoice">
+    <h2>Facture n° <span th:text="${invoice.invoiceNumber}"></span></h2>
+
+    <div class="section">
+        <h3>Passager</h3>
+        <div class="flex">
+            <div><span class="label">Nom :</span><span class="value" th:text="${invoice.lastNamePassenger}"></span></div>
+            <div><span class="label">Prénom :</span><span class="value" th:text="${invoice.firstNamePassenger}"></span></div>
+            <div><span class="label">Âge :</span><span class="value" th:text="${invoice.passengerAge}"></span></div>
+            <div><span class="label">Sexe :</span><span class="value" th:text="${invoice.gender} ? 'Homme' : 'Femme'"></span></div>
+            <div><span class="label">N° Passager :</span><span class="value" th:text="${invoice.numberPassenger}"></span></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Vol</h3>
+        <div class="flex">
+            <div><span class="label">N° Vol :</span><span class="value" th:text="${invoice.flightNumber}"></span></div>
+            <div><span class="label">Départ :</span><span class="value" th:text="${invoice.departurePlanet} + ' - ' + ${invoice.departurePort}"></span></div>
+            <div><span class="label">Arrivée :</span><span class="value" th:text="${invoice.arrivalPlanet} + ' - ' + ${invoice.arrivalPort}"></span></div>
+            <div><span class="label">Date Départ :</span><span class="value" th:text="${#temporals.format(invoice.departureTime, 'dd/MM/yyyy HH:mm')}"></span></div>
+            <div><span class="label">Date Arrivée :</span><span class="value" th:text="${#temporals.format(invoice.arrivalTime, 'dd/MM/yyyy HH:mm')}"></span></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Paiement</h3>
+        <div class="flex">
+            <div><span class="label">Montant :</span><span class="value" th:text="${invoice.price} + ' ' + ${invoice.currency}"></span></div>
+            <div><span class="label">Carte :</span><span class="value" th:text="${invoice.cardBrand} + ' **** ' + ${invoice.cardLastDigits}"></span></div>
+            <div><span class="label">Expiration :</span><span class="value" th:text="${invoice.cardExpMonth} + '/' + ${invoice.cardExpYear}"></span></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Infos supplémentaires</h3>
+        <div class="flex">
+            <div><span class="label">Email acheteur :</span><span class="value" th:text="${invoice.userEmail}"></span></div>
+            <div><span class="label">Date Réservation :</span><span class="value" th:text="${#temporals.format(invoice.bookingDate, 'dd/MM/yyyy HH:mm')}"></span></div>
+            <div><span class="label">Date Facture :</span><span class="value" th:text="${#temporals.format(invoice.invoiceDate, 'dd/MM/yyyy HH:mm')}"></span></div>
+            <div><span class="label">Statut :</span><span class="value" th:text="${invoice.bookingStatus}"></span></div>
+        </div>
+    </div>
+    <a th:href="@{/invoices/{id}/pdf(id=${invoice.id})}" target="_blank">Télécharger PDF</a>
+    <div style="text-align: center; margin-bottom: 20px;">
+        <a href="/">
+            <button type="button" style="padding: 10px 20px; font-size: 14px; cursor: pointer;">
+                Retour à l'accueil
+            </button>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

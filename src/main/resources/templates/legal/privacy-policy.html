@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Politique de confidentialité et cookies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        p {
+            line-height: 1.6;
+            color: #555;
+        }
+        .btn-back {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 16px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn-back:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Politique de confidentialité et d’utilisation des cookies</h1>
+
+<h2>1. Données personnelles collectées</h2>
+<p>Ce site collecte certaines données personnelles dans le but exclusif d’assurer le bon fonctionnement du service :</p>
+<ul>
+    <li>Nom et prénom</li>
+    <li>Adresse e-mail</li>
+    <li>Numéro de téléphone</li>
+    <li>Date de naissance</li>
+    <li>Historique de connexion</li>
+    <li>Identifiant Stripe (paiement)</li>
+</ul>
+<p>Ces données ne sont en aucun cas transmises à des tiers à des fins commerciales.</p>
+
+<h2>2. Cookies</h2>
+<p>Ce site utilise uniquement des cookies strictement nécessaires :</p>
+<ul>
+    <li>Gestion de session utilisateur (ex. : JSESSIONID)</li>
+    <li>Sécurité et authentification</li>
+    <li>Gestion des paiements sécurisés via Stripe</li>
+</ul>
+<p>Aucun cookie publicitaire ou de suivi n’est utilisé. Conformément au RGPD, aucun consentement n’est requis pour ces cookies essentiels.</p>
+
+<h2>3. Vos droits</h2>
+<p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous pouvez demander à consulter, modifier ou supprimer vos données personnelles à tout moment en nous contactant.</p>
+
+<a class="btn-back" th:href="@{/}">Retour à l'accueil</a>
+
+</body>
+</html>

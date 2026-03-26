@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détail de la réservation</title>
+    <link rel="stylesheet" th:href="@{/css/admin/admin.css}">
+</head>
+<body>
+<header>
+    <h1>Interface Admin – Backoffice</h1>
+    <div th:replace="~{admin/menu :: menu}"></div>
+</header>
+<main>
+    <h1>Détail de la réservation</h1>
+    <form th:action="@{'/admin/bookings/' + ${booking.idBooking} + '/edit'}" th:object="${booking}" method="post">
+        <ul>
+            <li>ID : <span th:text="*{idBooking}"></span></li>
+            <li>Vol :
+                <span th:if="${!editMode}" th:text="*{idFlight}"></span>
+                <input th:if="${editMode}" th:field="*{idFlight}" type="number" min="0" />
+            </li>
+            <li>User :
+                <span th:if="${!editMode}" th:text="*{idUser}"></span>
+                <input th:if="${editMode}" th:field="*{idUser}" type="number" min="0" />
+            </li>
+            <li>Siège :
+                <span th:if="${!editMode}" th:text="*{seatNumber}"></span>
+                <input th:if="${editMode}" th:field="*{seatNumber}" type="number" min="0" />
+            </li>
+            <li>Prix :
+                <span th:if="${!editMode}" th:text="*{price}"></span>
+                <input th:if="${editMode}" th:field="*{price}" type="number" step="0.01" min="0" />
+            </li>
+            <li>Nom passager :
+                <span th:if="${!editMode}" th:text="*{lastNamePassenger}"></span>
+                <input th:if="${editMode}" th:field="*{lastNamePassenger}" />
+            </li>
+            <li>Prénom passager :
+                <span th:if="${!editMode}" th:text="*{firstNamePassenger}"></span>
+                <input th:if="${editMode}" th:field="*{firstNamePassenger}" />
+            </li>
+            <li>Num passager :
+                <span th:if="${!editMode}" th:text="*{numberPassenger}"></span>
+                <input th:if="${editMode}" th:field="*{numberPassenger}" />
+            </li>
+            <li>Âge :
+                <span th:if="${!editMode}" th:text="*{passengerAge}"></span>
+                <input th:if="${editMode}" th:field="*{passengerAge}" type="number" min="0" />
+            </li>
+            <li>Sexe :
+                <span th:if="${!editMode}" th:text="*{gender} ? 'H' : 'F'"></span>
+                <select th:if="${editMode}" th:field="*{gender}">
+                    <option th:value="true">H</option>
+                    <option th:value="false">F</option>
+                </select>
+            </li>
+            <li>Status :
+                <span th:if="${!editMode}" th:text="*{status}"></span>
+                <select th:if="${editMode}" th:field="*{status}">
+                    <option th:each="s : ${T(fr.thomascecil.heliodysse.domain.model.enums.bookingEnum.BookingStatus).values()}" th:value="${s}" th:text="${s}"></option>
+                </select>
+            </li>
+            <li>Date création : <span th:text="*{dateCreation}"></span></li>
+            <li>Créé par : <span th:text="*{createdBy}"></span></li>
+            <li>Dernière modification : <span th:text="*{lastModificationDate}"></span></li>
+            <li>Modifié par : <span th:text="*{lastModificationBy}"></span></li>
+            <li>Version : <span th:text="*{version}"></span></li>
+        </ul>
+        <div th:if="${editMode}">
+            <button type="submit">💾 Enregistrer</button>
+            <a th:if="${!createMode}" th:href="@{'/admin/bookings/' + ${booking.idBooking}}">Annuler</a>
+            <a th:if="${createMode}" th:href="@{'/admin/bookings'}">Annuler</a>
+        </div>
+    </form>
+    <div th:if="${!editMode}">
+        <a th:href="@{'/admin/bookings/' + ${booking.idBooking} + '?edit=true'}">✏️ Éditer</a>
+        <form th:if="${!createMode}" th:action="@{'/admin/bookings/' + ${booking.idBooking} + '/delete'}" method="post" style="display:inline;" onsubmit="return confirm('Supprimer cette réservation ?');">
+            <button type="submit" style="color: red; background: none; border: none; cursor: pointer;">🗑️ Supprimer</button>
+        </form>
+        <a href="/admin/bookings" style="margin-left: 10px;">⬅ Retour à la liste</a>
+    </div>
+    <div th:if="${success}" th:text="${success}" style="color:green;"></div>
+    <div th:if="${error}" th:text="${error}" style="color:red;"></div>
+</main>
+</body>
+</html> 

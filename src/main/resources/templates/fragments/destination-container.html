@@ -1,0 +1,26 @@
+<div th:fragment="destination-container" class="destination-container" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="toggle-button" id="destinationToggleButton">
+        <div class="chevron" id="destinationChevron"></div>
+    </div>
+    <div class="destination-panel" id="destinationPanel">
+        <h1 class="panel-title" id="panelTitle">Choisissez une destination</h1>
+        <div class="panel-divider"></div>
+
+        <div class="travel-info">
+            <!-- Liste des sélections -->
+            <div class="selections-list" id="selectionsList">
+                <!-- sélections seront ajoutées dynamiquement ici -->
+            </div>
+
+            <!-- Bouton de sélection -->
+            <div class="selection-action">
+                <button class="select-planet-button" id="selectPlanetButton">
+                    Sélectionner la planète visible
+                </button>
+                <button class="launch-button hidden" id="launchButton">
+                    Lancer le voyage
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

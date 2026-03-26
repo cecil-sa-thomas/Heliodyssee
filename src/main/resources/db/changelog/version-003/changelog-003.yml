@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 005-alter-initial-schema
+      author: admin
+      changes:
+        - sqlFile:
+            path: structure/V0_0_3_alter_initial_schema.sql
+            relativeToChangelogFile: true
+            endDelimiter: ";"
+            splitStatements: true
+            stripComments: true

@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - include:
+      context: default
+      file: db/changelog/version-001/changelog-001.yml
+  - include:
+      context: default
+      file: db/changelog/version-002/changelog-002.yml
+  - include:
+      context: default
+      file: db/changelog/version-003/changelog-003.yml
+  - include:
+      context: default
+      file: db/changelog/version-004/changelog-004.yml

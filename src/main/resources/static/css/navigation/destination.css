@@ -1,0 +1,221 @@
+/* Styles pour le panneau de destination */
+.destination-container {
+    position: fixed;
+    top: 20%;
+    right: 50px;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.destination-panel {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    rgba(136, 182, 251, 0.1) /* un peu moins transparent */
+    border-radius: 12px;
+    padding: 20px;
+    width: 320px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+.panel-title {
+    color: #FEB063;
+    text-shadow: 0 0 3px #F83A00, 0 0 8px #F83A00, 0 0 16px #F83A00, 0 0 32px #F83A00;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.5s, text-shadow 0.5s;
+}
+
+.panel-divider {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #3a9bc8, transparent);
+    margin-bottom: 20px;
+}
+
+
+.destination-panel.hidden {
+    transform: translateX(320px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* Animation pour l'apparition */
+@keyframes slideInRight {
+    from {
+        transform: translateX(320px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.destination-panel.showing {
+    animation: slideInRight 0.3s ease;
+}
+
+.destination-container .toggle-button {
+    position: absolute;
+    left: -55px;
+    margin: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.destination-container .toggle-button:hover {
+    background: linear-gradient(270deg,rgba(58, 155, 200, 0) 0%,rgba(58, 155, 200, 0.2) 40%);
+    transform: translateX(5px);
+    box-shadow: -6px 2px 10px rgba(58, 155, 200, 0.3);
+}
+
+.destination-container .chevron {
+    border-right: none;
+    border-left: 12px solid #3a9bc8;
+}
+
+@media (max-width: 768px) {
+    .destination-container {
+        right: 0;
+    }
+
+    .destination-container .toggle-button {
+        left: -40px;
+        width: 40px;
+        height: 50px;
+    }
+
+
+}
+
+/* Styles pour les informations de voyage */
+
+.travel-info {
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.selections-list {
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.selection-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.selection-item:last-child {
+    margin-bottom: 0;
+}
+
+.selection-type {
+    color: #38ff00;;
+    text-shadow: rgb(199, 255, 0) 0px 0px 3px,
+        rgb(78, 248, 0) 0px 0px 8px,
+        rgb(78, 248, 0) 0px 0px 16px,
+        rgb(66, 248, 0) 0px 0px 32px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.selection-value {
+    color: #74e6ff;
+    text-shadow: 0 0 3px #00b7ff, 0 0 6px #0099cc;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.delete-button {
+    background: rgba(255, 59, 48, 0.2);
+    border: 1px solid rgba(255, 59, 48, 0.5);
+    border-radius: 4px;
+    color: #ff3b30;
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete-button:hover {
+    background: rgba(255, 59, 48, 0.3);
+    border-color: #ff3b30;
+}
+
+.selection-action {
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.select-planet-button {
+    background: linear-gradient(135deg, rgba(58, 155, 200, 0.2) 0%, rgba(42, 52, 65, 0.8) 100%);
+    border: 2px solid rgba(58, 155, 200, 0.5);
+    border-radius: 8px;
+    padding: 12px 25px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.launch-button {
+    background: linear-gradient(135deg, rgba(52, 199, 89, 0.2) 0%, rgba(42, 65, 42, 0.8) 100%);
+    border: 2px solid rgba(52, 199, 89, 0.5);
+    border-radius: 8px;
+    padding: 15px 30px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.launch-button:hover {
+    background: linear-gradient(135deg, rgba(52, 199, 89, 0.4) 0%, rgba(42, 65, 42, 0.9) 100%);
+    border-color: #34c759;
+    box-shadow: 0 4px 20px rgba(52, 199, 89, 0.3);
+}
+
+.launch-button.hidden {
+    display: none;
+}
+
+/* Animation pour le panneau de sélection */
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+

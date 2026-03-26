@@ -1,0 +1,34 @@
+<div th:fragment="connexion-container" class="connexion-container hidden" id="connexionContainer"
+     xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="connexion-form">
+        <h2 class="form-title">CONNEXION</h2>
+        <div class="title-divider"></div>
+
+        <form th:action="@{/connexion}" method="post" id="connexionForm">
+            <div class="form-group">
+                <label class="form-label">e-mail</label>
+                <input type="email" name="username" id="email" class="form-input" required />
+                <!-- ⚠️ name="username" est obligatoire pour Spring Security -->
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Mot de passe</label>
+                <input type="password" name="password" id="password" class="form-input" required />
+                <!-- ⚠️ name="password" doit aussi être exactement ça -->
+            </div>
+            <div th:if="${loginError}" class="error-message">
+                Adresse e-mail ou mot de passe invalide.
+            </div>
+            <button type="submit" class="form-button validate-button">VALIDER</button>
+
+            <div class="forgot-password">
+                <a href="#" id="forgotPassword">Identifiant oublié ?</a>
+            </div>
+
+            <div class="form-buttons">
+                <button type="button" class="form-button close-form-button" id="closeConnexionButton">Fermer</button>
+            </div>
+        </form>
+
+    </div>
+</div>

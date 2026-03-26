@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détail de l'utilisateur</title>
+    <link rel="stylesheet" th:href="@{/css/admin/admin.css}">
+</head>
+<body>
+
+<header>
+    <h1>Interface Admin – Backoffice</h1>
+    <div th:replace="~{admin/menu :: menu}"></div>
+</header>
+
+<main th:with="safeCreateMode=${createMode != null ? createMode : false}">
+    <h1 th:text="${safeCreateMode ? 'Nouvel utilisateur' : 'Détail de l''utilisateur'}">Détail de l'utilisateur</h1>
+
+    <!-- Messages d'erreur et de succès en haut -->
+    <div th:if="${success}" th:text="${success}" style="color:green; font-weight:bold; margin-bottom:15px; padding:10px; border:1px solid green; background-color:#e8f5e8; border-radius:4px;"></div>
+    <div th:if="${error}" th:text="${error}" style="color:red; font-weight:bold; margin-bottom:15px; padding:10px; border:1px solid red; background-color:#ffe8e8; border-radius:4px;"></div>
+
+    <!-- Formulaire pour l'édition/création -->
+    <form th:if="${editMode}"
+          th:action="${safeCreateMode ? '/admin/users/new' : '/admin/users/' + user.idUser + '/edit'}"
+          th:object="${user}"
+          method="post">
+        <ul style="list-style:none; padding:0;">
+            <li th:unless="${safeCreateMode}" style="margin-bottom:10px;">
+                <strong>ID :</strong> <span th:text="*{idUser}"></span>
+            </li>
+            <li style="margin-bottom:10px;">
+                <label for="firstName"><strong>Prénom :</strong></label><br>
+                <input id="firstName" th:field="*{firstName}" required style="width:300px; padding:5px;" />
+            </li>
+            <li style="margin-bottom:10px;">
+                <label for="lastName"><strong>Nom :</strong></label><br>
+                <input id="lastName" th:field="*{lastName}" required style="width:300px; padding:5px;" />
+            </li>
+            <li style="margin-bottom:10px;">
+                <label for="email"><strong>Email :</strong></label><br>
+                <input id="email" th:field="*{email}" type="email" required style="width:300px; padding:5px;" />
+            </li>
+            <li style="margin-bottom:10px;">
+                <label for="phone"><strong>Téléphone :</strong></label><br>
+                <input id="phone" th:field="*{phone}" style="width:300px; padding:5px;" />
+            </li>
+            <li style="margin-bottom:10px;">
+                <label for="dateOfBirth"><strong>Date de naissance :</strong></label><br>
+                <input id="dateOfBirth" th:field="*{dateOfBirth}" type="date" style="width:300px; padding:5px;" />
+            </li>
+            <li style="margin-bottom:10px;">
+                <label for="status"><strong>Statut :</strong></label><br>
+                <select id="status" th:field="*{status}" style="width:312px; padding:5px;">
+                    <option value="">-- Sélectionner --</option>
+                    <option th:each="s : ${T(fr.thomascecil.heliodysse.domain.model.enums.userEnum.UserStatus).values()}"
+                            th:value="${s}"
+                            th:text="${s}"></option>
+                </select>
+            </li>
+            <li style="margin-bottom:10px;">
+                <label for="role"><strong>Rôle :</strong></label><br>
+                <select id="role" th:field="*{role}" style="width:312px; padding:5px;">
+                    <option value="">-- Sélectionner --</option>
+                    <option th:each="r : ${T(fr.thomascecil.heliodysse.domain.model.enums.userEnum.UserRole).values()}"
+                            th:value="${r}"
+                            th:text="${r}"></option>
+                </select>
+            </li>
+            <li th:if="${safeCreateMode}" style="margin-bottom:10px;">
+                <label for="password"><strong>Mot de passe :</strong></label><br>
+                <input type="password" id="password" th:field="*{password}" required style="width:300px; padding:5px;" />
+            </li>
+            <li th:unless="${safeCreateMode}" style="margin-bottom:10px;">
+                <label for="activationToken"><strong>Token d'activation :</strong></label><br>
+                <input id="activationToken" th:field="*{activationToken}" style="width:300px; padding:5px;" />
+            </li>
+            <li th:unless="${safeCreateMode}" style="margin-bottom:10px;">
+                <label for="activationTokenExpiration"><strong>Expiration du token :</strong></label><br>
+                <input id="activationTokenExpiration" th:field="*{activationTokenExpiration}" type="datetime-local" style="width:300px; padding:5px;" />
+            </li>
+        </ul>
+
+        <div style="margin-top:20px;">
+            <button type="submit" style="padding:10px 20px; background-color:#4CAF50; color:white; border:none; border-radius:4px; cursor:pointer;">💾 Enregistrer</button>
+            <a th:unless="${safeCreateMode}"
+               th:href="@{'/admin/users/' + ${user.idUser}}"
+               style="margin-left:10px; padding:10px 20px; background-color:#f44336; color:white; text-decoration:none; border-radius:4px;">Annuler</a>
+            <a th:if="${safeCreateMode}"
+               th:href="@{'/admin/users'}"
+               style="margin-left:10px; padding:10px 20px; background-color:#f44336; color:white; text-decoration:none; border-radius:4px;">Annuler</a>
+        </div>
+    </form>
+
+    <!-- Affichage en lecture seule -->
+    <div th:unless="${editMode}">
+        <ul style="list-style:none; padding:0;">
+            <li style="margin-bottom:8px;"><strong>ID :</strong> <span th:text="${user.idUser}"></span></li>
+            <li style="margin-bottom:8px;"><strong>Prénom :</strong> <span th:text="${user.firstName}"></span></li>
+            <li style="margin-bottom:8px;"><strong>Nom :</strong> <span th:text="${user.lastName}"></span></li>
+            <li style="margin-bottom:8px;"><strong>Email :</strong> <span th:text="${user.email}"></span></li>
+            <li style="margin-bottom:8px;"><strong>Téléphone :</strong> <span th:text="${user.phone}"></span></li>
+            <li style="margin-bottom:8px;"><strong>Date de naissance :</strong> <span th:text="${user.dateOfBirth}"></span></li>
+            <li style="margin-bottom:8px;"><strong>Statut :</strong> <span th:text="${user.status}"></span></li>
+            <li style="margin-bottom:8px;"><strong>Rôle :</strong> <span th:text="${user.role}"></span></li>
+            <li style="margin-bottom:8px;"><strong>Dernière connexion :</strong> <span th:text="${user.lastConnected}"></span></li>
+            <li style="margin-bottom:8px;"><strong>Date création :</strong> <span th:text="${user.dateCreation}"></span></li>
+            <li style="margin-bottom:8px;"><strong>Créé par :</strong> <span th:text="${user.createdBy}"></span></li>
+            <li style="margin-bottom:8px;"><strong>Dernière modification :</strong> <span th:text="${user.lastModificationDate}"></span></li>
+            <li style="margin-bottom:8px;"><strong>Modifié par :</strong> <span th:text="${user.lastModificationBy}"></span></li>
+            <li style="margin-bottom:8px;"><strong>Token d'activation :</strong> <span th:text="${user.activationToken}"></span></li>
+            <li style="margin-bottom:8px;"><strong>Expiration du token :</strong> <span th:text="${user.activationTokenExpiration}"></span></li>
+        </ul>
+
+        <div style="margin-top:20px;">
+            <a th:href="@{'/admin/users/' + ${user.idUser} + '?edit=true'}"
+               style="padding:10px 20px; background-color:#2196F3; color:white; text-decoration:none; border-radius:4px;">✏️ Éditer</a>
+            <form th:action="@{'/admin/users/' + ${user.idUser} + '/delete'}"
+                  method="post"
+                  style="display:inline; margin-left:10px;"
+                  onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">
+                <button type="submit"
+                        style="padding:10px 20px; background-color:#f44336; color:white; border:none; border-radius:4px; cursor:pointer;">🗑️ Supprimer</button>
+            </form>
+            <a href="/admin/users"
+               style="margin-left:10px; padding:10px 20px; background-color:#9E9E9E; color:white; text-decoration:none; border-radius:4px;">⬅ Retour à la liste</a>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

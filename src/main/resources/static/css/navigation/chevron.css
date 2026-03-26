@@ -1,0 +1,30 @@
+.toggle-button {
+    width: 50px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+}
+
+.toggle-button:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 16px rgba(58, 155, 200, 0.3);
+}
+
+/* Styles pour les chevrons */
+.chevron {
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    transition: transform 0.3s ease;
+}
+
+.chevron.flipped {
+    transform: rotate(180deg);
+}

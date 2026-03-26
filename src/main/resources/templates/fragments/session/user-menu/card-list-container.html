@@ -1,0 +1,29 @@
+<div th:fragment="card-list-container" id="cardListModal" class="card-list-modal hidden" xmlns:th="http://www.w3.org/1999/xhtml">
+  <div class="modal-overlay" id="cardListOverlay"></div>
+  <div class="modal-content" tabindex="-1">
+    <h2>Mes cartes de paiement</h2>
+    <div id="cardList">
+      <!-- Les cartes s'affichent ici -->
+    </div>
+    <button id="addCardBtn" class="form-button">Ajouter une carte</button>
+    <div id="addCardFormContainer" class="hidden">
+      <h3>Ajouter une nouvelle carte</h3>
+      <form id="addCardForm">
+        <div class="form-group">
+          <label for="card-holder-name">Nom du titulaire</label>
+          <input type="text" id="card-holder-name" required />
+        </div>
+        <div class="form-group">
+          <label for="card-element">Informations de la carte</label>
+          <div id="card-element"></div>
+        </div>
+        <div id="card-errors" class="card-errors"></div>
+        <div class="form-buttons">
+          <button type="submit" class="form-button">Ajouter la carte</button>
+          <button type="button" class="form-button close-form-button" id="cancelAddCardBtn">Annuler</button>
+        </div>
+      </form>
+    </div>
+    <button type="button" class="form-button close-form-button" id="closeCardListButton">Fermer</button>
+  </div>
+</div>

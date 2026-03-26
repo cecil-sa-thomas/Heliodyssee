@@ -1,0 +1,18 @@
+header {
+  width: 100%;
+  position: fixed; /* flotter au-dessus */
+  top: 0;
+  left: 0;
+  z-index: 10; /* requiert de valider la position des autres élément */
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  /*background: linear-gradient(135deg, #171717, #1a0e0e); */
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 150;
+  letter-spacing: 2px;
+}

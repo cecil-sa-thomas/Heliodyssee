@@ -1,0 +1,98 @@
+/*BOUTON DE CONNEXION/INSCRIPTION*/
+
+.nav-buttons-container {
+    position: fixed;
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: flex;
+    border: 2px solid #3a4a5c3f;
+    border-radius: 10px;
+    padding: 8px 8px;
+     gap: 1rem;/*permet de faire un gap pour le contenue*/
+
+}
+
+.nav-button {
+    background: linear-gradient(135deg, rgba(26, 35, 50, 0) 0%, rgba(0, 110, 255, 0) 0%);
+    border: 1px solid #1e3a5f00;
+    border-radius: 0.625rem; /* 10px */
+    padding: 1.25rem 3.75rem; /* 20px 60px */
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1875rem; /* 3px */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 17.5rem; /* 280px */
+    text-align: center;
+    color: #74e6ff;
+    text-shadow: 0 0 0.1875rem #00b7ff, 0 0 0.375rem #0099cc; /* 3px, 6px */
+}
+
+.nav-button:hover {
+    background: rgba(58, 155, 200, 0.2);
+    transform: translateX(0.3125rem); /* 5px */
+    box-shadow: 0 0.25rem 1rem rgba(58, 155, 200, 0.3); /* 4px 16px */
+    color: #fff;
+    text-shadow:
+        0 0 0.375rem #74e6ff,
+        0 0 1rem #00cfff,
+        0 0 2rem #00b7ff,
+        0 0 4rem #0099cc;
+}
+
+.nav-button span {
+    position: relative;
+    z-index: 2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-buttons-container {
+        gap: 0.9375rem; /* 15px */
+    }
+
+    .nav-button {
+        padding: 1.125rem 2.5rem; /* 18px 40px */
+        font-size: 0.7rem; /* entre 16px et 20px */
+        letter-spacing: 0.125rem; /* 2px */
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-button {
+        padding: 1rem 1.875rem; /* 15px 30px */
+        font-size: 0.7rem; /* entre 15px et 18px */
+        letter-spacing: 0.0625rem; /* 1px */
+    }
+}
+
+/* Animation d'entrée */
+@keyframes slideInFromBottom {
+    from {
+        transform: translate(-50%, 50%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+.nav-buttons-container {
+    animation: slideInFromBottom 0.8s ease-out;
+}
+
+/* Effet de bordure animée */
+.nav-button {
+    background-clip: padding-box;
+}
+
+.nav-button::before {
+    z-index: 1;
+}

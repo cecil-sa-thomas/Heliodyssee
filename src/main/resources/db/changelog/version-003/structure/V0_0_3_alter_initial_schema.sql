@@ -1,0 +1,2 @@
+ALTER TABLE user_
+  MODIFY COLUMN password CHAR(60) NOT NULL;

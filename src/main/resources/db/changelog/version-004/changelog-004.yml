@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 006-insert-data-schema
+      author: admin
+      changes:
+        - sqlFile:
+            path: data/V0_0_4_insert_data_schema.sql
+            relativeToChangelogFile: true
+            endDelimiter: ";"
+            splitStatements: true
+            stripComments: true

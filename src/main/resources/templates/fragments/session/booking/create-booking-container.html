@@ -1,0 +1,46 @@
+<div th:fragment="create-booking-container" class="create-booking-container hidden" id="createBookingContainer" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="booking-form">
+        <h2 class="form-title">Réserver un vol</h2>
+        <div class="title-divider"></div>
+
+        <form id="bookingForm">
+            <input type="hidden" id="selectedFlightId" name="flightId" /><!-- champs caché pour récupré l'id du flight -->
+            <div class="form-group">
+                <label class="form-label">Prénom du passager</label>
+                <input type="text" class="form-input" name="firstNamePassenger" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Nom du passager</label>
+                <input type="text" class="form-input" name="lastNamePassenger" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Âge du passager</label>
+                <input type="number" class="form-input" name="passengerAge" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Genre</label>
+                <select class="form-input" name="gender" required>
+                    <option value="true">Homme</option>
+                    <option value="false">Femme</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Carte bancaire</label>
+                <div id="cardListContainer" class="form-input" style="padding: 12px; background: white; border-radius: 6px; color: rgb(0, 157, 255);"></div>
+            </div>
+            <div id="card-errors" style="color: red; font-size: 14px;"></div>
+
+            <!-- Ces deux champs seront remplis dynamiquement par le JS -->
+            <input type="hidden" name="flightId" id="bookingFlightId">
+            <input type="hidden" name="userId" id="bookingUserId">
+
+            <div class="form-buttons">
+                <button type="submit" class="form-button validate-button">Valider</button>
+                <button type="button" class="form-button close-form-button" id="closeBookingFormButton">Fermer</button>
+            </div>
+        </form>
+    </div>
+</div>

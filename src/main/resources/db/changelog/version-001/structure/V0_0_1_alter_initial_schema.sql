@@ -1,0 +1,1 @@
+ALTER TABLE booking ADD CONSTRAINT uniq_seat_flight UNIQUE(seat_number, id_flight);

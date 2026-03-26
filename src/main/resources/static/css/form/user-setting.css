@@ -1,0 +1,66 @@
+.settings-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3s ease-in-out;
+    backdrop-filter: blur(5px);
+}
+.settings-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.settings-container.hidden .settings-form {
+    transform: scale(0.8);
+}
+
+.settings-form {
+    background: linear-gradient(180deg, rgba(13, 20, 31, 0.95) 0%, rgba(7, 12, 20, 0.98) 100%);
+    border: 1px solid rgba(58, 155, 200, 0.3);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    position: relative;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 0 30px rgba(0, 157, 255, 0.1);
+}
+
+.settings-form .form-title {
+    color: #FF4B2B;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.settings-form .title-divider {
+    height: 2px;
+    background: linear-gradient(90deg,
+        rgba(255, 75, 43, 0.1),
+        rgba(255, 75, 43, 0.5),
+        rgba(255, 75, 43, 0.1));
+    margin: -15px 0 25px 0;
+}
+
+/* Style spécifique pour les boutons du formulaire d'inscription */
+.settings-form .validate-button {
+    background: linear-gradient(135deg, rgba(255, 75, 43, 0.3) 0%, rgba(42, 52, 65, 0.9) 100%);
+    border-color: rgba(255, 75, 43, 0.5);
+}
+
+.settings-form .validate-button:hover {
+    border-color: #FF4B2B;
+    box-shadow: 0 4px 20px rgba(255, 75, 43, 0.3);
+}

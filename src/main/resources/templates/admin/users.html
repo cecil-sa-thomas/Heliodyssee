@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des utilisateurs</title>
+    <link rel="stylesheet" th:href="@{/css/admin/admin.css}">
+</head>
+<body>
+
+<header>
+    <h1>Interface Admin – Backoffice</h1>
+    <div th:replace="~{admin/menu :: menu}"></div>
+</header>
+
+<main>
+    <h1>Liste des utilisateurs</h1>
+    <a href="/admin/users/new" style="margin-bottom: 10px; display: inline-block;">➕ Ajouter</a>
+    <div th:if="${success}" th:text="${success}" style="color:green; font-weight:bold; margin-bottom:10px;"></div>
+    <div th:if="${error}" th:text="${error}" style="color:red; font-weight:bold; margin-bottom:10px;"></div>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID</th><th>Email</th><th>Status</th><th>Date de naissance</th>
+            <th>Téléphone</th><th>Rôle</th><th>Dernière connexion</th>
+            <th>Créé le</th><th>Créé par</th><th>Dernière modif</th><th>Par</th><th>Détail</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.idUser}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.status}"></td>
+            <td th:text="${user.dateOfBirth}"></td>
+            <td th:text="${user.phone}"></td>
+            <td th:text="${user.role}"></td>
+            <td th:text="${user.lastConnected}"></td>
+            <td th:text="${user.dateCreation}"></td>
+            <td th:text="${user.createdBy}"></td>
+            <td th:text="${user.lastModificationDate}"></td>
+            <td th:text="${user.lastModificationBy}"></td>
+            <td>
+                <a th:if="${user.idUser != null}" th:href="@{'/admin/users/' + ${user.idUser}}">Voir</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/admin" style="margin-top: 20px; display: inline-block;">Retour menu admin</a>
+</main>
+
+</body>
+</html>

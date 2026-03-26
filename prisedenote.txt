@@ -1,0 +1,26 @@
+
+| Méthode                     | Requête SQL générée approximativement              |
+| --------------------------- | -------------------------------------------------- |
+| `findById(ID id)`           | `SELECT * FROM table WHERE id = ?`                 |
+| `findAll()`                 | `SELECT * FROM table`                              |
+| `findAllById(Iterable<ID>)` | `SELECT * FROM table WHERE id IN (?, ?, ?)`        |
+| `save(T entity)`            | `INSERT` ou `UPDATE` selon si `id` est null ou non |
+| `saveAll(Iterable<T>)`      | `INSERT`/`UPDATE` en batch                         |
+| `delete(T entity)`          | `DELETE FROM table WHERE id = ?`                   |
+| `deleteById(ID id)`         | `DELETE FROM table WHERE id = ?`                   |
+| `deleteAll()`               | `DELETE FROM table`                                |
+| `count()`                   | `SELECT COUNT(*) FROM table`                       |
+| `existsById(ID id)`         | `SELECT 1 FROM table WHERE id = ? LIMIT 1`         |
+| `flush()`                   | Force l’exécution immédiate du SQL                 |
+
+
+| Mot clé         | Signification SQL  |
+| --------------- | ------------------ |
+| `findBy`        | `WHERE`            |
+| `And`, `Or`     | `AND`, `OR`        |
+| `In`            | `IN (...)`         |
+| `Between`       | `BETWEEN ? AND ?`  |
+| `Containing`    | `LIKE %...%`       |
+| `StartingWith`  | `LIKE ...%`        |
+| `EndingWith`    | `LIKE %...`        |
+| `OrderByXxxAsc` | `ORDER BY xxx ASC` |

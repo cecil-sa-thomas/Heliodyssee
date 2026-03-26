@@ -1,0 +1,24 @@
+<!-- Menu utilisateur déroulant (exemple minimal) -->
+<div th:fragment="user-authenticated" class="user-authenticated" xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <button class="user-menu-toggle" id="userMenuToggle" aria-label="Ouvrir le menu utilisateur">
+
+        <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-3 8-3 8-3s8 0 8 3"/>
+        </svg>
+    </button>
+
+    <ul class="user-dropdown" id="userDropdown">
+        <li><button class="user-action-btn" type="button" id="setting-btn">Paramètres</button></li>
+        <li><button class="user-action-btn" type="submit" form="form-history">Historique</button></li>
+        <li><button class="user-action-btn" type="submit" form="form-support">Assistance</button></li>
+        <li><button class="user-action-btn" type="button" id="card-payment-btn">Carte de paiement</button></li>
+        <li><button class="logout-btn" type="submit" form="form-logout">Déconnexion</button></li>
+    </ul>
+
+    <!-- Formulaires séparés ailleurs dans la page, invisibles -->
+    <form id="form-history" th:action="@{/invoices}" method="get"></form>
+    <form id="form-support" th:action="@{/support}" method="get"></form>
+    <form id="form-logout" th:action="@{/logout}" method="post"></form>
+</div>

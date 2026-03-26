@@ -1,0 +1,52 @@
+<div th:fragment="settings-container" class="settings-container hidden" id="settingsContainer" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="settings-form">
+        <h2 class="form-title">Paramètres utilisateur</h2>
+        <div class="title-divider"></div>
+
+        <form id="settingsForm">
+            <div class="form-group">
+                <label class="form-label" for="firstName">Prénom</label>
+                <input type="text" class="form-input" id="firstName" name="firstName" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="lastName">Nom</label>
+                <input type="text" class="form-input" id="lastName" name="lastName" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input type="text" class="form-input" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="phone">Téléphone</label>
+                <input type="tel" class="form-input" id="phone" name="phone">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="password">Nouveau mot de passe</label>
+                <input type="password" placeholder="********" class="form-input" id="password" name="password">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="confirmation">Confirmation nouveau Mot de Passe</label>
+                <input type="password" placeholder="********" class="form-input" id="confirmation" name="confirmation">
+            </div>
+            <small id="passwordMismatch" style="color: rgb(248, 56, 56); display: none;">
+                Les mots de passe ne correspondent pas.
+            </small>
+            <div class="form-group">
+                <label class="form-label" for="oldPassword">Mot de passe actuel</label>
+                <input type="password" placeholder="********" class="form-input" id="oldPassword" name="oldPassword">
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit" class="form-button validate-button">Enregistrer les modifications</button>
+                <button type="button" class="form-button close-form-button" id="closeSettingsButton">Fermer</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div th:replace="~{fragments/session/user-menu/card-list-container :: card-list-container}"></div>

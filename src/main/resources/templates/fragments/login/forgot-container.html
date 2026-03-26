@@ -1,0 +1,20 @@
+<div th:fragment="forgot-container" class="forgot-container hidden" id="forgotContainer"
+     xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="forgot-form">
+        <h2 class="form-title">IDENTIFIANT OUBLIÉ</h2>
+        <div class="title-divider"></div>
+
+        <form id="forgotForm">
+            <div class="form-group">
+                <label class="form-label">e-mail</label>
+                <input type="email" class="form-input" name="email" required>
+            </div>
+
+            <button type="submit" class="form-button validate-button">VALIDER</button>
+
+            <div class="form-buttons">
+                <button type="button" class="form-button close-form-button" id="closeForgotButton">Fermer</button>
+            </div>
+        </form>
+    </div>
+</div>

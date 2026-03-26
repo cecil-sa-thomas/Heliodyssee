@@ -1,0 +1,27 @@
+<!-- Menu utilisateur déroulant (exemple minimal) -->
+<div th:fragment="booking-authenticated" class="booking-authenticated" xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <button class="booking-menu-toggle" id="userBookingToggle" aria-label="Ouvrir mes vols à venir">
+        <!-- SVG Vaisseau -->
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 16l10-14 10 14-10 6z" />
+            <circle cx="12" cy="9" r="2" />
+            <path d="M12 11v6" />
+        </svg>
+    </button>
+
+    <ul class="user-dropdown" id="userDropdown">
+    </ul>
+
+    <!-- Modal -->
+    <div class="booking-modal hidden" id="userBookingModal">
+        <div class="booking-modal-content">
+            <h2 class="booking-title">Mes voyages à venir</h2>
+            <div id="userUpcomingBookingsList">
+                <!-- recuperation des bookins -->
+            </div>
+            <button class="close-booking-modal" id="closeUserBookingModal">Fermer</button>
+        </div>
+    </div>
+
+</div>

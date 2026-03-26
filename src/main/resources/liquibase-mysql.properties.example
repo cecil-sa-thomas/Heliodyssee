@@ -1,0 +1,8 @@
+driver=com.mysql.cj.jdbc.Driver
+url=jdbc:mysql://localhost:3307/YOUR_DATABASE
+username=YOUR_USERNAME
+password=YOUR_PASSWORD
+searchPath=src/main/resources
+changeLogFile=db/changelog/changelog-master.yml
+
+AND DONT FORGET TO REMOVE ".example" from file's name
