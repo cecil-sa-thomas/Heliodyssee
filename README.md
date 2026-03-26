@@ -3,6 +3,10 @@
 ```powershell
 $env:MYSQL_PASSWORD = "mdpgenerique"
 ```
+
+```powershell
+$env:MYSQL_PASSWORD = "mdpgenerique"
+```
 ```powershell
 [Environment]::SetEnvironmentVariable("MYSQL_PASSWORD", "mdpgenerique", "User")
 ```
