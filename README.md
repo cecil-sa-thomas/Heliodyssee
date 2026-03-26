@@ -1,8 +1,6 @@
 # Heliodysse
 
-```powershell
-$env:MYSQL_PASSWORD = "mdpgenerique"
-```
+En cours de rédaction***
 
 ```powershell
 $env:MYSQL_PASSWORD = "mdpgenerique"
